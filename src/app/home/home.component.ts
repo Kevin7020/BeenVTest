@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../_models';
+import { Report } from '../_models';
 import { UserService, AuthenticationService } from '../_services';
 
 @Component({
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     currentUser: User;
     currentUserSubscription: Subscription;
     users: User[] = [];
+    reports: Report;
 
     constructor(
         private authenticationService: AuthenticationService,
@@ -43,15 +45,17 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.currentUserSubscription.unsubscribe();
     }
 
-    
+    //https://cors-anywhere.herokuapp.com/ is going to workaround the cors from the API
 
+    
     getUserReport() {
-        var baseUrl = "https://www.beenverified.com/hk/dd/teaser/email";
+        var baseUrl = "https://cors-anywhere.herokuapp.com/https://www.beenverified.com/hk/dd/teaser/email";
         var completeUrl = baseUrl + "?email=" + this.f.userEmail.value
         const headers = new HttpHeaders({'Access-Control-Allow-Origin': '*'});
         headers.append('Access-Control-Allow-Methods', 'GET');
         this.http.get(completeUrl, { headers: headers })
         .subscribe(response => {
+            this.reports = response;
           console.log(response);//Is it working?
           
         });
