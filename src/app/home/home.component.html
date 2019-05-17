@@ -1,0 +1,11 @@
+<h1>Hi {{currentUser.firstName}}!</h1>
+
+<form [formGroup]="searchForm" (ngSubmit)="getUserReport()">
+    <div class="form-group row justify-content-center">
+        <input type="text" formControlName="userEmail" Placeholder="Search" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Search</button>
+    </div>
+</form>
