@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     get f() { return this.searchForm.controls; }
 
     ngOnInit() {
-        this.list = new report();
+        //this.list = new report();
         this.loadAllUsers();
         this.searchForm = this.formBuilder.group({
             userEmail: ['']

@@ -5,3 +5,10 @@ body{
 #rep{
   background-color: #DDDDDD ;
 }
+
+.themed-grid-col {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #ffffff;
+  border: 1px solid #4b4a4a70;
+}

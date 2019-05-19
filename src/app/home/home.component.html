@@ -19,16 +19,46 @@
         </div>
     </div>
 </div>
-
 <br>
 <!-- Display the report data {{ list.report_info.report_id }}-->
-<div class="container-fluid" *ngIf="(list | json) != ({} | json)">
+<div class="container-fluid" *ngIf="list">
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Report</h5>
-            <div *ngFor="let name of list.names">
-                <p class="card-text">{{ name.full }}</p>
+            <div class="row">
+                <div class="col themed-grid-col">
+                    <h4>Names</h4>
+                    <div *ngFor="let name of list.names">
+                        <p class="card-text">{{ name.full }}</p>
+                    </div>
+                </div>
+                <div class="col themed-grid-col">
+                    <h4>Email Addresses</h4>
+                    <div *ngFor="let email of list.emails">
+                        <p class="card-text">{{ email.email_address }}</p>
+                    </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col themed-grid-col">
+                    <h4>Social</h4>
+                    <!--
+                    <div *ngIf="">
+                        <div *ngFor="let email of list.emails">
+                            <p class="card-text">{{ email.email_address }}</p>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="col themed-grid-col">
+                    <h4>Jobs</h4>
+
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<!--
+<div *ngFor="let name of list.names">
+<p class="card-text">{{ name.full }}</p>
+</div>
+-->
