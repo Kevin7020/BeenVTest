@@ -1,6 +1,6 @@
 <h1>Hi {{currentUser.firstName}}!</h1>
 
-<form [formGroup]="searchForm" (ngSubmit)="getUserReport()">
+<form [formGroup]="searchForm" (ngSubmit)="Search()">
     <div class="form-group row justify-content-center">
         <input type="text" formControlName="userEmail" Placeholder="Search" class="form-control" />
 
@@ -12,8 +12,6 @@
 <br>
 <div class="container">
     <div class="row">
-        <div class="col">
-            {{reports.username}}
-        </div>
+            {{ list.report_info.report_id }}
     </div>
 </div>

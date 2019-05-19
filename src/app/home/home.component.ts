@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../_models';
-import { Report } from '../_models';
+import { report } from '../_models';
 import { UserService, AuthenticationService } from '../_services';
+import { DataService } from '../_services';
 
 @Component({
     templateUrl: 'home.component.html',
@@ -18,22 +18,26 @@ export class HomeComponent implements OnInit, OnDestroy {
     currentUser: User;
     currentUserSubscription: Subscription;
     users: User[] = [];
-    public reports;//: Report;
+    list: report;
 
     constructor(
         private authenticationService: AuthenticationService,
         private formBuilder: FormBuilder,
         private userService: UserService,
-        private http: HttpClient
+        private data: DataService
     ) {
         this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
             this.currentUser = user;
         });
     }
+    goDetails(Report: report) {
+
+    }
 
     get f() { return this.searchForm.controls; }
 
     ngOnInit() {
+        this.list = null;
         this.loadAllUsers();
         this.searchForm = this.formBuilder.group({
             userEmail: ['']
@@ -45,21 +49,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.currentUserSubscription.unsubscribe();
     }
 
-    //https://cors-anywhere.herokuapp.com/ is going to workaround the cors from the API
-
-    
-    getUserReport() {
-        var baseUrl = "https://cors-anywhere.herokuapp.com/https://www.beenverified.com/hk/dd/teaser/email";
-        var completeUrl = baseUrl + "?email=" + this.f.userEmail.value
-        const headers = new HttpHeaders({'Access-Control-Allow-Origin': '*'});
-        headers.append('Access-Control-Allow-Methods', 'GET');
-        this.http.get(completeUrl, { headers: headers })
-        .subscribe(response => {
-            this.reports = response;
-          console.log(response);//Is it working?
-          
-        });
-    }
+    Search() {
+        this.data.getUserReport( this.f.userEmail.value, list => {
+          this.list = list;
+        })
+      }
 
     deleteUser(id: number) {
         this.userService.delete(id).pipe(first()).subscribe(() => {
