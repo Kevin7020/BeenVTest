@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { first, map } from 'rxjs/operators';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+import { FormBuilder, FormGroup/*, Validators*/ } from '@angular/forms';
 
 import { User } from '../_models';
 import { report } from '../_models';
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     get f() { return this.searchForm.controls; }
 
     ngOnInit() {
-        this.list = null;
+        this.list = new report();
         this.loadAllUsers();
         this.searchForm = this.formBuilder.group({
             userEmail: ['']

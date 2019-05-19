@@ -27,19 +27,7 @@ export class DataService {
         //callback (list);
     }
 
-
-    
-
-   /* getUserdReport() {
-        var baseUrl = "https://cors-anywhere.herokuapp.com/https://www.beenverified.com/hk/dd/teaser/email";
-        var completeUrl = baseUrl + "?email=" + this.f.userEmail.value
-        this.http.get(completeUrl)
-            .subscribe(response => {
-                console.log(response);//Is it working?
-                //this.list = response;
-            });
-    }
-
+   /* 
     save(coffee, callback) {
       if (coffee._id) {
         //its an update
