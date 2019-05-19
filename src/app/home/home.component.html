@@ -19,12 +19,13 @@
         </div>
     </div>
 </div>
+
 <br>
 <!-- Display the report data {{ list.report_info.report_id }}-->
 <div class="container-fluid" *ngIf="list">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Report</h5>
+            <h5 class="card-title">Report ID: {{ list.report_info.report_id }}</h5>
             <div class="row">
                 <div class="col themed-grid-col">
                     <h4>Names</h4>
@@ -41,16 +42,23 @@
                 <div class="w-100"></div>
                 <div class="col themed-grid-col">
                     <h4>Social</h4>
-                    <!--
-                    <div *ngIf="">
-                        <div *ngFor="let email of list.emails">
-                            <p class="card-text">{{ email.email_address }}</p>
+                    <div *ngIf="list.social.length; else elseBlock1">
+                        <div *ngFor="let social of list.social">
+                            <p class="card-text">The API hasnt provided me the proprerties found on this array, You were
+                                lucky to find one 😅</p>
                         </div>
-                    </div>-->
+                    </div>
+                    <ng-template #elseBlock1>No social networks were found, just a stealthy person I guess. 🤔</ng-template>
                 </div>
                 <div class="col themed-grid-col">
                     <h4>Jobs</h4>
-
+                    <div *ngIf="list.jobs.length; else elseBlock2">
+                        <div *ngFor="let job of list.jobs">
+                            <p class="card-text">The API hasnt provided me the proprerties found on this array, You were
+                                lucky to find one 😅</p>
+                        </div>
+                    </div>
+                    <ng-template #elseBlock2>No jobs were found, maybe this user has never worked before(?)</ng-template>
                 </div>
             </div>
         </div>
