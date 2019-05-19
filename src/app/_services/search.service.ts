@@ -20,20 +20,4 @@ export class DataService {
             });
     }
 
-   /* 
-    save(coffee, callback) {
-      if (coffee._id) {
-        //its an update
-        this.http.put(`${this.endpoint}/coffees/${coffee._id}`, coffee)
-        .subscribe(response => {
-          callback(true);
-        })
-      } else {
-        //its an insert
-        this.http.post(`${this.endpoint}/coffees/`, coffee)
-        .subscribe(response => {
-          callback(true);
-        })
-      }
-    }*/
 }
