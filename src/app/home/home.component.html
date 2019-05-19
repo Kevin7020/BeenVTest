@@ -7,7 +7,7 @@
 
                 <form [formGroup]="searchForm" (ngSubmit)="Search()">
                     <div class="form-group row justify-content-center">
-                        <input type="text" formControlName="userEmail" Placeholder="Search for Emails" class="form-control" />
+                        <input id="email" type="text" formControlName="userEmail" Placeholder="Search for Emails" class="form-control" />
 
                     </div>
                     <div class="form-group">
@@ -21,9 +21,14 @@
 </div>
 
 <br>
-<!-- Display the report data -->
-<div class="container" *ngIf="(list | json) != ({} | json)">
-    <div class="row">
-        {{ list.report_info.report_id }}
+<!-- Display the report data {{ list.report_info.report_id }}-->
+<div class="container-fluid" *ngIf="(list | json) != ({} | json)">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Report</h5>
+            <div *ngFor="let name of list.names">
+                <p class="card-text">{{ name.full }}</p>
+            </div>
+        </div>
     </div>
 </div>

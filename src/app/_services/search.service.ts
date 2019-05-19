@@ -13,18 +13,11 @@ export class DataService {
     public endpoint = "https://cors-anywhere.herokuapp.com/https://www.beenverified.com/hk/dd/teaser/email";
 
     getUserReport(email, callback) {
-        console.log("Invoked getUserReport");
         this.http.get(`${this.endpoint}?email=${email}`)
             .subscribe(response => {
                 console.log(response);//Is it working?
                 callback(response);
             });
-
-        //const list = [
-        //new Coffee("Double Espresso","Sunny Cafe", new PlaceLocation("123 Market St","San Francisco")),
-        //new Coffee("Caramel Americano","StarCoffee", new PlaceLocation("Gran Via 34","Marid"))
-        //]
-        //callback (list);
     }
 
    /* 
