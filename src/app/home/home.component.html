@@ -1,17 +1,29 @@
-<h1>Hi {{currentUser.firstName}}!</h1>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <alert></alert>
+                <h1>Hi {{currentUser.firstName}}!</h1>
 
-<form [formGroup]="searchForm" (ngSubmit)="Search()">
-    <div class="form-group row justify-content-center">
-        <input type="text" formControlName="userEmail" Placeholder="Search" class="form-control" />
+                <form [formGroup]="searchForm" (ngSubmit)="Search()">
+                    <div class="form-group row justify-content-center">
+                        <input type="text" formControlName="userEmail" Placeholder="Search for Emails" class="form-control" />
 
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <button class="btn btn-primary">Search</button>
-    </div>
-</form>
+</div>
+
 <br>
+<!-- Display the report data -->
 <div class="container" *ngIf="(list | json) != ({} | json)">
     <div class="row">
-            {{ list.report_info.report_id }}
+        {{ list.report_info.report_id }}
     </div>
 </div>
