@@ -1,7 +1,7 @@
 <!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #81b44c;" *ngIf="currentUser">
     <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">BeenVerified Test</a>
+        <a class="nav-item active nav-link" routerLink="/">BeenVerified Test</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
 </nav>
