@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     currentUser: User;
     currentUserSubscription: Subscription;
     users: User[] = [];
-    list: report;
+    Report: report;
 
     constructor(
         private authenticationService: AuthenticationService,
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     get f() { return this.searchForm.controls; }
 
     ngOnInit() {
-        //this.list = new report();
+        //this.Report = new report();
         this.loadAllUsers();
         this.searchForm = this.formBuilder.group({
             userEmail: ['']
@@ -50,8 +50,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     Search() {
-        this.data.getUserReport( this.f.userEmail.value, list => {
-          this.list = list;
+        this.data.getUserReport( this.f.userEmail.value, Report => {
+          this.Report = Report;
         })
       }
 

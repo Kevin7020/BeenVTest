@@ -22,28 +22,28 @@
 
 <br>
 <!-- Display the report data -->
-<div class="container-fluid" *ngIf="list">
+<div class="container-fluid" *ngIf="Report">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Report ID: {{ list.report_info.report_id }}</h5>
+            <h5 class="card-title">Report ID: {{ Report.report_info.report_id }}</h5>
             <div class="row">
                 <div class="col themed-grid-col">
                     <h4>Names</h4>
-                    <div *ngFor="let name of list.names">
+                    <div *ngFor="let name of Report.names">
                         <p class="card-text">{{ name.full }}</p>
                     </div>
                 </div>
                 <div class="col themed-grid-col">
                     <h4>Email Addresses</h4>
-                    <div *ngFor="let email of list.emails">
+                    <div *ngFor="let email of Report.emails">
                         <p class="card-text">{{ email.email_address }}</p>
                     </div>
                 </div>
                 <div class="w-100"></div>
                 <div class="col themed-grid-col">
                     <h4>Social</h4>
-                    <div *ngIf="list.social.length; else elseBlock1">
-                        <div *ngFor="let social of list.social">
+                    <div *ngIf="Report.social.length; else elseBlock1">
+                        <div *ngFor="let social of Report.social">
                             <p class="card-text">The API hasnt provided me the proprerties found on this array, You were
                                 lucky to find one 😅</p>
                         </div>
@@ -52,8 +52,8 @@
                 </div>
                 <div class="col themed-grid-col">
                     <h4>Jobs</h4>
-                    <div *ngIf="list.jobs.length; else elseBlock2">
-                        <div *ngFor="let job of list.jobs">
+                    <div *ngIf="Report.jobs.length; else elseBlock2">
+                        <div *ngFor="let job of Report.jobs">
                             <p class="card-text">The API hasnt provided me the proprerties found on this array, You were
                                 lucky to find one 😅</p>
                         </div>
@@ -66,7 +66,7 @@
 </div>
 
 <!--
-<div *ngFor="let name of list.names">
+<div *ngFor="let name of Report.names">
 <p class="card-text">{{ name.full }}</p>
 </div>
 -->
