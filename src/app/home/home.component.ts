@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup/*, Validators*/ } from '@angular/forms';
 import { User } from '../_models';
 import { report } from '../_models';
 import { UserService, AuthenticationService } from '../_services';
-import { DataService } from '../_services';
+import { SearchService } from '../_services';
 
 @Component({
     templateUrl: 'home.component.html',
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         private authenticationService: AuthenticationService,
         private formBuilder: FormBuilder,
         private userService: UserService,
-        private data: DataService
+        private data: SearchService
     ) {
         this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
             this.currentUser = user;
