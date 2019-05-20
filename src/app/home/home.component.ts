@@ -53,6 +53,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.data.getUserReport( this.f.userEmail.value, Report => {
           this.Report = Report;
           this.history.addReport(Report);
+          this.historyReport = this.history.getReports();
         })
       }
 
