@@ -45,17 +45,17 @@
                     <div *ngIf="Report.social.length; else elseBlock1">
                         <div *ngFor="let social of Report.social">
                             <p class="card-text">The API hasnt provided me the proprerties found on this array, You were
-                                lucky to find one 😅</p>
+                                lucky to find one. :D</p>
                         </div>
                     </div>
-                    <ng-template #elseBlock1>No social networks were found, just a stealthy person I guess. 🤔</ng-template>
+                    <ng-template #elseBlock1>No social networks were found, just a stealthy person I guess. :/</ng-template>
                 </div>
                 <div class="col themed-grid-col">
                     <h4>Jobs</h4>
                     <div *ngIf="Report.jobs.length; else elseBlock2">
                         <div *ngFor="let job of Report.jobs">
                             <p class="card-text">The API hasnt provided me the proprerties found on this array, You were
-                                lucky to find one 😅</p>
+                                lucky to find one. :D</p>
                         </div>
                     </div>
                     <ng-template #elseBlock2>No jobs were found, maybe this user has never worked before(?)</ng-template>
@@ -88,26 +88,26 @@
                     <div class="w-100"></div>
                     <div class="col themed-grid-col">
                         <h4>Social</h4>
-                        <div *ngIf="item.social.length; else elseBlock1">
+                        <div *ngIf="item.social.length; else elseBlock3">
                             <div *ngFor="let social of item.social">
                                 <p class="card-text">The API hasnt provided me the proprerties found on this array, You
                                     were
-                                    lucky to find one 😅</p>
+                                    lucky to find one. :D</p>
                             </div>
                         </div>
-                        <ng-template #elseBlock1>No social networks were found, just a stealthy person I guess. 🤔
+                        <ng-template #elseBlock3>No social networks were found, just a stealthy person I guess. :/
                         </ng-template>
                     </div>
                     <div class="col themed-grid-col">
                         <h4>Jobs</h4>
-                        <div *ngIf="item.jobs.length; else elseBlock2">
+                        <div *ngIf="item.jobs.length; else elseBlock4">
                             <div *ngFor="let job of item.jobs">
                                 <p class="card-text">The API hasnt provided me the proprerties found on this array, You
                                     were
-                                    lucky to find one 😅</p>
+                                    lucky to find one. :D</p>
                             </div>
                         </div>
-                        <ng-template #elseBlock2>No jobs were found, maybe this user has never worked before(?)
+                        <ng-template #elseBlock4>No jobs were found, maybe this user has never worked before(?)
                         </ng-template>
                     </div>
                 </div>
