@@ -2,6 +2,16 @@ body{
   background-color: #fcfcfc;
 }
 
+#histTitle {
+  /* top | right | bottom | left */
+  margin: 0px auto 15px 35px;
+}
+
+#SrchTitle {
+  /* top | right | bottom | left */
+  margin: 0px auto 15px 35px;
+}
+
 .themed-grid-col {
   padding-top: 15px;
   padding-bottom: 15px;
