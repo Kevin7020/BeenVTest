@@ -3,10 +3,8 @@ import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { FormBuilder, FormGroup/*, Validators*/ } from '@angular/forms';
 
-import { User } from '../_models';
-import { report } from '../_models';
-import { UserService, AuthenticationService } from '../_services';
-import { SearchService } from '../_services';
+import { User, report } from '../_models';
+import { UserService, AuthenticationService, SearchService, HistoryService } from '../_services';
 
 @Component({
     templateUrl: 'home.component.html',
@@ -19,12 +17,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     currentUserSubscription: Subscription;
     users: User[] = [];
     Report: report;
+    historyReport: report;
 
     constructor(
         private authenticationService: AuthenticationService,
         private formBuilder: FormBuilder,
         private userService: UserService,
-        private data: SearchService
+        private data: SearchService,
+        private history: HistoryService
     ) {
         this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
             this.currentUser = user;
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     get f() { return this.searchForm.controls; }
 
     ngOnInit() {
-        //this.Report = new report();
+        this.historyReport = this.history.getReports();
         this.loadAllUsers();
         this.searchForm = this.formBuilder.group({
             userEmail: ['']
@@ -52,6 +52,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     Search() {
         this.data.getUserReport( this.f.userEmail.value, Report => {
           this.Report = Report;
+          this.history.addReport(Report);
         })
       }
 
