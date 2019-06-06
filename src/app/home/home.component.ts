@@ -30,9 +30,6 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.currentUser = user;
         });
     }
-    goDetails(Report: report) {
-
-    }
 
     get f() { return this.searchForm.controls; }
 
@@ -52,7 +49,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     Search() {
         this.data.getUserReport( this.f.userEmail.value, Report => {
           this.Report = Report;
-          this.history.addReport(Report);
+          this.history.addReport(Report, this.currentUser.id);
           this.historyReport = this.history.getReports();
         })
       }

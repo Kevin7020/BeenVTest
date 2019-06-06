@@ -1,4 +1,5 @@
 export class report {
+    appUser_id: number;
     report_info: {
         query_id: null;
         report_id: string;

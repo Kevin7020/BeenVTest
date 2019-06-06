@@ -7,7 +7,8 @@
 
                 <form [formGroup]="searchForm" (ngSubmit)="Search()">
                     <div class="form-group row justify-content-center">
-                        <input id="email" type="text" formControlName="userEmail" Placeholder="Search for Emails" class="form-control" />
+                        <input id="email" type="text" formControlName="userEmail" Placeholder="Search for Emails"
+                            class="form-control" />
 
                     </div>
                     <div class="form-group">
@@ -24,7 +25,7 @@
 <!-- Display the report data -->
 
 <div id="SearchResult" class="container-fluid" *ngIf="Report">
-        <h3 id="SrchTitle" class="display-4">Search Results</h3>
+    <h3 id="SrchTitle" class="display-4">Search Results</h3>
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Report ID: {{ Report.report_info.report_id }}</h5>
@@ -46,21 +47,21 @@
                     <h4>Social</h4>
                     <div *ngIf="Report.social.length; else elseBlock1">
                         <div *ngFor="let social of Report.social">
-                            <p class="card-text">The API hasnt provided me the proprerties found on this array, You were
-                                lucky to find one. :D</p>
+                            <p class="card-text">The API hasnt provided me the proprerties found on this array, You were lucky to find one. :D</p>
                         </div>
                     </div>
-                    <ng-template #elseBlock1>No social networks were found, just a stealthy person I guess. :/</ng-template>
+                    <ng-template #elseBlock1>No social networks were found, just a stealthy person I guess. :/
+                    </ng-template>
                 </div>
                 <div class="col themed-grid-col">
                     <h4>Jobs</h4>
                     <div *ngIf="Report.jobs.length; else elseBlock2">
                         <div *ngFor="let job of Report.jobs">
-                            <p class="card-text">The API hasnt provided me the proprerties found on this array, You were
-                                lucky to find one. :D</p>
+                            <p class="card-text">The API hasnt provided me the proprerties found on this array, You were lucky to find one. :D</p>
                         </div>
                     </div>
-                    <ng-template #elseBlock2>No jobs were found, maybe this user has never worked before(?)</ng-template>
+                    <ng-template #elseBlock2>No jobs were found, maybe this user has never worked before(?)
+                    </ng-template>
                 </div>
             </div>
         </div>
@@ -71,51 +72,49 @@
 <!-- Display the history data             <p class="card-text">{{ item.report_info.report_id }}</p> -->
 <h1 id="histTitle" class="display-4">Search History</h1>
 <div class="container" *ngIf="historyReport">
-    <div *ngFor="let item of historyReport">
-        <div class="card bg-light">
-            <div class="card-body">
-                <h5 class="card-title">Report ID: {{ item.report_info.report_id }}</h5>
-                <div class="row">
-                    <div class="col themed-grid-col">
-                        <h4>Names</h4>
-                        <div *ngFor="let name of item.names">
-                            <p class="card-text">{{ name.full }}</p>
-                        </div>
-                    </div>
-                    <div class="col themed-grid-col">
-                        <h4>Email Addresses</h4>
-                        <div *ngFor="let email of item.emails">
-                            <p class="card-text">{{ email.email_address }}</p>
-                        </div>
-                    </div>
-                    <div class="w-100"></div>
-                    <div class="col themed-grid-col">
-                        <h4>Social</h4>
-                        <div *ngIf="item.social.length; else elseBlock3">
-                            <div *ngFor="let social of item.social">
-                                <p class="card-text">The API hasnt provided me the proprerties found on this array, You
-                                    were
-                                    lucky to find one. :D</p>
+    <ng-container *ngFor="let item of historyReport">
+        <ng-container *ngIf="item.appUser_id == currentUser.id">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">Report ID: {{ item.report_info.report_id }}</h5>
+                    <div class="row">
+                        <div class="col themed-grid-col">
+                            <h4>Names</h4>
+                            <div *ngFor="let name of item.names">
+                                <p class="card-text">{{ name.full }}</p>
                             </div>
                         </div>
-                        <ng-template #elseBlock3>No social networks were found, just a stealthy person I guess. :/
-                        </ng-template>
-                    </div>
-                    <div class="col themed-grid-col">
-                        <h4>Jobs</h4>
-                        <div *ngIf="item.jobs.length; else elseBlock4">
-                            <div *ngFor="let job of item.jobs">
-                                <p class="card-text">The API hasnt provided me the proprerties found on this array, You
-                                    were
-                                    lucky to find one. :D</p>
+                        <div class="col themed-grid-col">
+                            <h4>Email Addresses</h4>
+                            <div *ngFor="let email of item.emails">
+                                <p class="card-text">{{ email.email_address }}</p>
                             </div>
                         </div>
-                        <ng-template #elseBlock4>No jobs were found, maybe this user has never worked before(?)
-                        </ng-template>
+                        <div class="w-100"></div>
+                        <div class="col themed-grid-col">
+                            <h4>Social</h4>
+                            <div *ngIf="item.social.length; else elseBlock3">
+                                <div *ngFor="let social of item.social">
+                                    <p class="card-text">The API hasnt provided me the proprerties found on this array, You were lucky to find one. :D</p>
+                                </div>
+                            </div>
+                            <ng-template #elseBlock3>No social networks were found, just a stealthy person I guess. :/
+                            </ng-template>
+                        </div>
+                        <div class="col themed-grid-col">
+                            <h4>Jobs</h4>
+                            <div *ngIf="item.jobs.length; else elseBlock4">
+                                <div *ngFor="let job of item.jobs">
+                                    <p class="card-text">The API hasnt provided me the proprerties found on this array, You were lucky to find one. :D</p>
+                                </div>
+                            </div>
+                            <ng-template #elseBlock4>No jobs were found, maybe this user has never worked before(?)
+                            </ng-template>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <br>
-    </div>
+            <br>
+        </ng-container>
+    </ng-container>
 </div>

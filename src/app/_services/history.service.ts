@@ -12,7 +12,8 @@ export class HistoryService {
     private reports: any[] = JSON.parse(localStorage.getItem('reports')) || [];
 
     // Add a new report to the history
-    addReport(Report: report) {
+    addReport(Report: report, UserId: number) {
+        Report.appUser_id = UserId;
         this.reports.push(Report);
         localStorage.setItem('reports', JSON.stringify(this.reports));
 
